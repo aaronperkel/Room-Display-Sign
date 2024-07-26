@@ -1,0 +1,126 @@
+:root {
+    --main-bg-color: #FFFFFF;
+    --main-text-color: rgb(55, 53, 47);
+    --main-bg-color-rgba: rgba(220, 220, 220, .8);
+}
+
+* {
+    font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
+section,
+body,
+h1, h2, h3 {
+   padding: 1%; 
+}
+
+h1, h2, h3 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    line-height: 1.2em;
+}
+
+h1 {
+	font-size: 1.75rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+}
+
+html {
+    background-color: var(--main-bg-color-rgba);
+    color: var(--main-text-color);
+}
+
+body {
+    margin: auto;
+    max-width: 57em;
+    display: grid;
+    grid-template-areas: 
+        "head head"
+        "txt prev"
+        "footer footer";
+    grid-template-columns: 50% 50%;
+    grid-gap: 2%;
+    padding: 20px;
+}
+
+/* */
+
+form {
+    padding: 2%;
+}
+
+input[type=submit] {
+    width: 30%;
+    background-color: #999999;
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--main-text-color);
+    transition: all .2s ease-in;
+}
+
+input[type=submit]:hover {
+  background-color: #42b548;
+  color: white;
+}
+
+/* */
+
+body > section:nth-child(1) {
+    grid-area: head;
+}
+
+body > section:nth-child(2) {
+    grid-area: txt;
+    outline: solid black;
+}
+
+body > section:nth-child(3) {
+    grid-area: prev;
+    outline: solid black;
+}
+
+body > footer {
+    grid-area: footer;
+}
+
+body div {
+    background: grey;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+}
+
+body div p:first-child {
+    padding: 2%;
+}
+
+body div p:not(:first-child) {
+    padding-top: 15px;
+    text-align: center;
+}
+
+body div p:nth-child(2) {
+    font-size: 24pt;
+}
+
+body div p:nth-child(3) {
+    font-size: 16pt;
+}
+
+body div p:nth-child(4) {
+    font-size: 16pt;
+    padding-bottom: 70px;
+}
+
+footer {
+    padding-top: 20px;
+    text-align: center;
+}

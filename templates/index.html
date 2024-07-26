@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Room Status</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}">
+</head>
+
+<body>
+    <section>
+        <h1>Set Room Status</h1>
+        <hr>
+    </section>
+    <section>
+        <h3>Status Text</h3>
+        <form action="/set_status" method="POST">
+            <label for="status">Line 1:</label><br>
+            <input type="text" maxlength="32" id="line_one" name="line_one" value="{{ status_line_one }}"><br><br>
+
+            <label for="status">Line 2:</label><br>
+            <input type="text" maxlength="32" id="line_two" name="line_two" value="{{ status_line_two }}"><br><br>
+
+            <label for="status">Line 3:</label><br>
+            <input type="text" maxlength="32" id="line_three" name="line_three" value="{{ status_line_three }}"><br><br>
+
+            <input type="submit" value="Set Status">
+        </form>
+    </section>
+
+    <section>
+        <h3>Preview</h3>
+        <div>
+            <p>July 26, 2024</p>
+            <p>{{ status_line_one }}</p>
+            <p>{{ status_line_two }}</p>
+            <p>{{ status_line_three }}</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            July 2024 Aaron Perkel
+        </p>
+    </footer>
+</body>
+</html>
