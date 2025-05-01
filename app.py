@@ -50,7 +50,7 @@ def display_message(line1, line2, line3):
         date = datetime.today().strftime('%B %d, %Y')
         draw.text((5, 10), date, font=font18, fill=0)
 
-        epd.display(epd.getbuffer(image))
+        epd.display_Fast(epd.getbuffer(image))
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
@@ -59,10 +59,17 @@ def display_message(line1, line2, line3):
 
 @app.route('/')
 def index():
-	return render_template('index.html', 
-    status_line_one=current_status_line_one,
-    status_line_two=current_status_line_two,
-    status_line_three=current_status_line_three)
+    today = datetime.today()
+    now_str = today.strftime('%B %d, %Y')        # e.g. “May 01, 2025”
+    year = today.year                            # e.g. 2025
+    return render_template(
+        'index.html',
+        status_line_one=current_status_line_one,
+        status_line_two=current_status_line_two,
+        status_line_three=current_status_line_three,
+        now=now_str,
+        year=year
+    )
 
 @app.route('/set_status', methods=['POST'])
 def set_status():
@@ -75,3 +82,4 @@ def set_status():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=False)
+    

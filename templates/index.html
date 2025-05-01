@@ -1,45 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room Status</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/custom.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/custom.css') }}">
 </head>
 
 <body>
-    <section>
-        <h1>Set Room Status</h1>
-        <hr>
-    </section>
-    <section>
-        <h3>Status Text</h3>
-        <form action="/set_status" method="POST">
-            <label for="status">Line 1:</label><br>
-            <input type="text" maxlength="22" id="line_one" name="line_one" value="{{ status_line_one }}"><br><br>
+    <header class="header">
+        <h1>Room Status Dashboard</h1>
+    </header>
 
-            <label for="status">Line 2:</label><br>
-            <input type="text" maxlength="32" id="line_two" name="line_two" value="{{ status_line_two }}"><br><br>
+    <main class="container">
+        <section class="card form-card">
+            <h2>Update Status</h2>
+            <form action="/set_status" method="POST" class="status-form">
+                <div class="form-group">
+                    <label for="line_one">Line 1</label>
+                    <input type="text" id="line_one" name="line_one" maxlength="15" value="{{ status_line_one }}"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="line_two">Line 2</label>
+                    <input type="text" id="line_two" name="line_two" maxlength="28" value="{{ status_line_two }}">
+                </div>
+                <div class="form-group">
+                    <label for="line_three">Line 3</label>
+                    <input type="text" id="line_three" name="line_three" maxlength="28" value="{{ status_line_three }}">
+                </div>
+                <button type="submit" class="btn">Set Status</button>
+            </form>
+        </section>
 
-            <label for="status">Line 3:</label><br>
-            <input type="text" maxlength="32" id="line_three" name="line_three" value="{{ status_line_three }}"><br><br>
+        <section class="card preview-card">
+            <h2>Live Preview</h2>
+            <div class="preview-content">
+                <time>{{ now }}</time>
+                <p class="line1">{{ status_line_one }}</p>
+                <p class="line2">{{ status_line_two }}</p>
+                <p class="line3">{{ status_line_three }}</p>
+            </div>
+        </section>
+    </main>
 
-            <input type="submit" value="Set Status">
-        </form>
-    </section>
-
-    <section>
-        <h3>Preview</h3>
-        <div>
-            <p>July 26, 2024</p>
-            <p>{{ status_line_one }}</p>
-            <p>{{ status_line_two }}</p>
-            <p>{{ status_line_three }}</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>
-            July 2024 Aaron Perkel
-        </p>
+    <footer class="footer">
+        <p>&copy; {{ year }} Aaron Perkel</p>
     </footer>
 </body>
+
 </html>
