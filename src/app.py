@@ -79,7 +79,3 @@ def set_status():
     current_status_line_three = request.form['line_three']
     display_message(current_status_line_one, current_status_line_two, current_status_line_three)
     return redirect(url_for('index'))
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=False)
-    

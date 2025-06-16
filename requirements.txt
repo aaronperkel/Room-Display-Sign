@@ -1,0 +1,6 @@
+Flask
+gunicorn
+Pillow
+waveshare-epd
+RPi.GPIO
+spidev
