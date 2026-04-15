@@ -1,0 +1,21 @@
+[Unit]
+Description=Room Bills E-Ink Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=aaronperkel
+Group=www-data
+WorkingDirectory=/home/aaronperkel/Room-Display-Sign
+Environment=APP_REFRESH_SECONDS=600
+Environment=APP_FONT_PATH=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+Environment=API_URL=https://utilities.aperkel.w3.uvm.edu/public/api/unpaid.php
+Environment=API_KEY=712345hello
+Environment=HMAC_KEY=macbookpassword
+ExecStart=/home/aaronperkel/Room-Display-Sign/venv/bin/python -u src/app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

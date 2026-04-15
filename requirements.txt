@@ -1,6 +1,5 @@
-Flask
-gunicorn
-Pillow
-waveshare-epd
-RPi.GPIO
-spidev
+Pillow==11.0.0
+requests>=2.31.0
+RPi.GPIO>=0.7
+spidev>=3.6
+git+https://github.com/waveshareteam/e-Paper.git#subdirectory=RaspberryPi_JetsonNano/python

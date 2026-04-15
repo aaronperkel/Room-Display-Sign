@@ -1,0 +1,20 @@
+# Enable SPI on the Pi:
+sudo raspi-config  # Interface Options -> SPI -> Enable
+sudo adduser aaronperkel spi
+
+# System deps (often needed):
+sudo apt-get update
+sudo apt-get install -y python3-dev python3-venv libopenjp2-7 libtiff5
+
+# Venv + install:
+cd /home/aaronperkel/Room-Display-Sign
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Service:
+sudo cp deployment/room-bills.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now room-bills
+journalctl -u room-bills -f
